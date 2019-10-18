@@ -17,6 +17,11 @@ set (CMAKE_MODULE_PATH
     "${PROJECT_SOURCE_DIR}/cmake/include"
 )
 
+if(WIN32)
+		add_compile_definitions(WINVER=0x0602)
+		add_compile_definitions(_WIN32_WINNT=0x0602)
+endif()
+
 # package version
 include (Version)
 core_find_git_rev(RELEASE_IDENTIFIER)

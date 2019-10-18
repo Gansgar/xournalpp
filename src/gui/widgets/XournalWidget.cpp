@@ -18,6 +18,12 @@
 #include <gdk/gdkkeysyms.h>
 #include <gui/inputdevices/InputContext.h>
 
+#ifdef WIN32
+// init Stylus event queue
+#include <gui/inputdevices/windows/InkEventCollectionPlugin.h>
+#endif
+
+
 static void gtk_xournal_class_init(GtkXournalClass* klass);
 static void gtk_xournal_init(GtkXournal* xournal);
 static void gtk_xournal_get_preferred_width(GtkWidget* widget, gint* minimal_width, gint* natural_width);
@@ -78,6 +84,7 @@ GtkWidget* gtk_xournal_new(XournalView* view, InputContext* inputContext)
 	xoj->input = inputContext;
 
 	xoj->input->connect(GTK_WIDGET(xoj));
+	// TODO: Maybe add init of RealTimeStylus here?
 
 	return GTK_WIDGET(xoj);
 }
