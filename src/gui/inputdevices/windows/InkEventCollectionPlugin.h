@@ -3,6 +3,11 @@
 //
 #pragma once
 
+#include <glib.h>
+#include <gdk/gdk.h>
+
 #ifdef WIN32
+
+GdkFilterReturn filter(GdkXEvent *xevent, GdkEvent *event, gpointer data);
 
 #endif

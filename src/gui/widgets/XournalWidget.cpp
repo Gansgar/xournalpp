@@ -83,8 +83,14 @@ GtkWidget* gtk_xournal_new(XournalView* view, InputContext* inputContext)
 
 	xoj->input = inputContext;
 
+
+//    GdkWindow *gdkWindow = gtk_widget_get_window(GTK_WIDGET(view->getControl()->getGtkWindow()));
+    gdk_window_add_filter(NULL, filter, NULL);
+//    // TODO: Maybe add init of RealTimeStylus here?
+
 	xoj->input->connect(GTK_WIDGET(xoj));
-	// TODO: Maybe add init of RealTimeStylus here?
+
+
 
 	return GTK_WIDGET(xoj);
 }
